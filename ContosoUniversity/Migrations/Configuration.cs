@@ -17,24 +17,40 @@ namespace ContosoUniversity.Migrations
 
         protected override void Seed(SchoolContext context)
         {
+            var addresses = new List<Address>
+            {
+                new Address {Email="acarson@cu.edu"},
+                new Address {Email="malonso@cu.edu"},
+                new Address {Email="aanand@cu.edu"},
+                new Address {Email="gbarzdukas@cu.edu"},
+                new Address {Email="yli@cu.edu"},
+                new Address {Email="pjustice@cu.edu"},
+                new Address {Email="lnorman@cu.edu"},
+                new Address {Email="nolivetto@cu.edu"},
+                new Address {Email="kabercrombi@cu.edu"},
+                new Address {Email="ffakori@cu.edu"},
+                new Address {Email="rhururi@cu.edu"},
+                new Address {Email="ckapoor@cu.edu"},
+                new Address {Email="rzheng@cu.edu"}
+            };
             var students = new List<Student>
             {
                 new Student { FirstMidName = "Carson",   LastName = "Alexander", 
-                    EnrollmentDate = DateTime.Parse("2010-09-01") },
+                    EnrollmentDate = DateTime.Parse("2010-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="acarson@cu.edu") },
                 new Student { FirstMidName = "Meredith", LastName = "Alonso",    
-                    EnrollmentDate = DateTime.Parse("2012-09-01") },
+                    EnrollmentDate = DateTime.Parse("2012-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="malonso@cu.edu") },
                 new Student { FirstMidName = "Arturo",   LastName = "Anand",     
-                    EnrollmentDate = DateTime.Parse("2013-09-01") },
+                    EnrollmentDate = DateTime.Parse("2013-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="aanand@cu.edu") },
                 new Student { FirstMidName = "Gytis",    LastName = "Barzdukas", 
-                    EnrollmentDate = DateTime.Parse("2012-09-01") },
+                    EnrollmentDate = DateTime.Parse("2012-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="gbarzdukas@cu.edu") },
                 new Student { FirstMidName = "Yan",      LastName = "Li",        
-                    EnrollmentDate = DateTime.Parse("2012-09-01") },
+                    EnrollmentDate = DateTime.Parse("2012-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="yli@cu.edu") },
                 new Student { FirstMidName = "Peggy",    LastName = "Justice",   
-                    EnrollmentDate = DateTime.Parse("2011-09-01") },
+                    EnrollmentDate = DateTime.Parse("2011-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="pjustice@cu.edu") },
                 new Student { FirstMidName = "Laura",    LastName = "Norman",    
-                    EnrollmentDate = DateTime.Parse("2013-09-01") },
+                    EnrollmentDate = DateTime.Parse("2013-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="lnorman@cu.edu") },
                 new Student { FirstMidName = "Nino",     LastName = "Olivetto",  
-                    EnrollmentDate = DateTime.Parse("2005-09-01") }
+                    EnrollmentDate = DateTime.Parse("2005-09-01"), Address = addresses.SingleOrDefault(a => a.Email =="nolivetto@cu.edu") }
             };
 
 
@@ -44,15 +60,15 @@ namespace ContosoUniversity.Migrations
             var instructors = new List<Instructor>
             {
                 new Instructor { FirstMidName = "Kim",     LastName = "Abercrombie", 
-                    HireDate = DateTime.Parse("1995-03-11") },
+                    HireDate = DateTime.Parse("1995-03-11"), Address = addresses.SingleOrDefault(a => a.Email =="kabercrombi@cu.edu") },
                 new Instructor { FirstMidName = "Fadi",    LastName = "Fakhouri",    
-                    HireDate = DateTime.Parse("2002-07-06") },
+                    HireDate = DateTime.Parse("2002-07-06"), Address = addresses.SingleOrDefault(a => a.Email =="ffakori@cu.edu") },
                 new Instructor { FirstMidName = "Roger",   LastName = "Harui",       
-                    HireDate = DateTime.Parse("1998-07-01") },
+                    HireDate = DateTime.Parse("1998-07-01"), Address = addresses.SingleOrDefault(a => a.Email =="rhururi@cu.edu") },
                 new Instructor { FirstMidName = "Candace", LastName = "Kapoor",      
-                    HireDate = DateTime.Parse("2001-01-15") },
+                    HireDate = DateTime.Parse("2001-01-15"), Address = addresses.SingleOrDefault(a => a.Email =="ckapoor@cu.edu") },
                 new Instructor { FirstMidName = "Roger",   LastName = "Zheng",      
-                    HireDate = DateTime.Parse("2004-02-12") }
+                    HireDate = DateTime.Parse("2004-02-12"), Address = addresses.SingleOrDefault(a => a.Email =="rzheng@cu.edu") }
             };
             instructors.ForEach(s => context.Instructors.AddOrUpdate(p => p.LastName, s));
             context.SaveChanges();
