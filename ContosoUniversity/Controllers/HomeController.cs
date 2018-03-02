@@ -18,6 +18,10 @@ namespace ContosoUniversity.Controllers
             return View();
         }
 
+        public ActionResult Chat()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             // Commenting out LINQ to show how to do the same thing in SQL.
