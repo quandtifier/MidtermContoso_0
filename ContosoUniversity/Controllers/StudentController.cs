@@ -22,7 +22,7 @@ namespace ContosoUniversity.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.DateSortParm = sortOrder == "Gpa" ? "gpa_desc" : "Gpa";
 
             if (searchString != null)
             {
@@ -47,10 +47,10 @@ namespace ContosoUniversity.Controllers
                 case "name_desc":
                     students = students.OrderByDescending(s => s.LastName);
                     break;
-                case "Date":
+                case "Gpa":
                     students = students.OrderBy(s => s.EnrollmentDate);
                     break;
-                case "date_desc":
+                case "gpa_desc":
                     students = students.OrderByDescending(s => s.EnrollmentDate);
                     break;
                 default:  // Name ascending 
@@ -90,7 +90,7 @@ namespace ContosoUniversity.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Student student)
+        public ActionResult Create([Bind(Include = "LastName, FirstMidName, EnrollmentDate, CreditsEarned, Gpa")]Student student)
         {
             try
             {
@@ -138,7 +138,7 @@ namespace ContosoUniversity.Controllers
             }
             var studentToUpdate = db.Students.Find(id);
             if (TryUpdateModel(studentToUpdate, "",
-               new string[] { "LastName", "FirstMidName", "EnrollmentDate" }))
+               new string[] { "LastName", "FirstMidName", "EnrollmentDate", "CreditsEarned", "Gpa" }))
             {
                 try
                 {
